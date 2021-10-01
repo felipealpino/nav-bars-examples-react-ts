@@ -1,16 +1,21 @@
 import styled from "styled-components";
 
+export const ContainrProducts = styled.div``;
 
-export const ContainerInput = styled.div``
+export const ContainerInput = styled.div`
+  margin-bottom: 20px;
+`;
 
 export const ProductCard = styled.div`
   display: flex;
   align-items: center;
-  border: 1px solid var(--main-anil-subtitle);
+  box-shadow: var(--main-bg-shadow);
   font-size: 11px;
-  margin-bottom: 3px;
+  margin-bottom: 8px;
   cursor: pointer;
   height: 40px;
+  border-radius: 4px;
+  padding: 5px;
 
   span:first-child {
     padding-left: 2px;

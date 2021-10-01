@@ -21,7 +21,7 @@ interface ISelectOptions {
 
 const Select: React.FC<ISelect> = ({ name, label, onChange, customStyles, options, placeholder, mandatory, ...rest }) => {
   const selectRef = useRef(null);
-  const { fieldName, defaultValue, registerField, error } = useField(name);
+  const { fieldName, defaultValue, registerField, error  } = useField(name);
   useEffect(() => {
     registerField({
       name: fieldName,

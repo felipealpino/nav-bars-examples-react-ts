@@ -6,4 +6,5 @@ export const Container = styled.div`
   width: 100vw;
   overflow-x: hidden;
   box-sizing: border-box;
+  padding: 10px;
 `;

@@ -1,55 +1,74 @@
 import { Form } from "@unform/web";
-import React, { useCallback, useEffect, useState } from "react";
+import axios, { CancelTokenSource } from "axios";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import AllContainer from "../../shared/components/AllContainer";
 import Input from "../../shared/components/Input";
 import PageHeader from "../../shared/components/PageHeader";
+import Select from "../../shared/components/Select";
 import Spinner from "../../shared/components/Spinner";
 import ListProductsService, { IProducts } from "./services/ListProductsService";
-import { ContainerInput, ProductCard } from "./styles";
+import { ContainerInput, ContainrProducts, ProductCard } from "./styles";
+
+const selectOptions = [
+  {
+    value: "reference",
+    name: "Referencia"
+  },
+  {
+    value: "description",
+    name: "Descrição"
+  },
+  {
+    value: "family",
+    name: "Família"
+  }
+];
 
 const Products: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<IProducts[]>();
+  const cancelDataRequest = useRef<CancelTokenSource>();
 
-  const loadProducts = useCallback(async (reference?: string, page?: number) => {
+  const loadProducts = useCallback(async (query?: string, value?: string, page?: number) => {
+    cancelDataRequest.current && cancelDataRequest.current.cancel("Cancelling search");
+    cancelDataRequest.current = axios.CancelToken.source();
     setIsLoading(true);
-    const listProducts = await new ListProductsService().listAllProducts(reference, page);
+    const listProducts = await new ListProductsService(cancelDataRequest.current).listAllProducts(query, value, page);
     setIsLoading(false);
-    if (!listProducts.success) return;
+    if (!listProducts) return;
     setProducts(listProducts.data);
-    console.log(listProducts.data);
   }, []);
 
   useEffect(() => {
     loadProducts();
+    setIsLoading(false);
   }, [loadProducts]);
 
-  const handleSubmit = (data: any) => {
-    console.log(data);
-    loadProducts(data.search_product);
+  const handleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
+    loadProducts(undefined, event.target.value);
+    setIsLoading(false);
   };
 
   return (
-    <>
+    <ContainrProducts>
       {isLoading && <Spinner />}
       <PageHeader title="PRODUTOS" />
       <AllContainer>
         <ContainerInput>
-          <Form onSubmit={handleSubmit}>
-            <Input name="search_product" label="Busque um produto" />
-            <input type="submit" value="Buscar" />
+          <Form onSubmit={() => {}}>
+            <Input name="search_product" label="Busque um produto" onChange={(e) => handleSubmit(e)} />
+            <Select name="search_type" label="Selecione o que deseja buscar" options={selectOptions} />
           </Form>
         </ContainerInput>
 
         {products?.map((p) => (
           <ProductCard key={p.CODPROD}>
-            <span>{p.CODPROD}</span>
             <span>{p.REFERENCIA}</span>
             <span>{p.DESCRICAO}</span>
           </ProductCard>
         ))}
       </AllContainer>
-    </>
+    </ContainrProducts>
   );
 };
 

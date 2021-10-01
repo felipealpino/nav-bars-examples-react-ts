@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { CancelToken, CancelTokenSource } from "axios";
 
 const apiUrl = process.env.REACT_APP_API_URL ? process.env.REACT_APP_API_URL : null;
 
@@ -18,9 +18,24 @@ export interface IProducts {
 }
 
 class ListProductsService {
-  public async listAllProducts(reference = "", page = 0): Promise<IlistAllProducts> {
-    const res = await axios.get(`${apiUrl}/products?size=30&page=0&reference=${reference}`);
-    return res.data;
+  private source: CancelTokenSource;
+
+  constructor(token: CancelTokenSource) {
+    this.source = token;
+  }
+
+  public async listAllProducts(query = "reference", value = "", page = 0): Promise<IlistAllProducts | false> {
+    try {
+      const res = await axios.get(`${apiUrl}/products?size=900&page=${page}&${query}=${value}`, {
+        cancelToken: this.source.token
+      });
+      return res.data;
+    } catch (error) {
+      if (axios.isCancel(error)) {
+        console.log("O request foi cancelado");
+      }
+      return false;
+    }
   }
 }
 
