@@ -1,8 +1,14 @@
 import React from "react";
-import { ContainerHome } from "./styles";
+import AllContainer from "../../shared/components/AllContainer";
+import PageHeader from "../../shared/components/PageHeader";
 
 const Home: React.FC = () => {
-  return <ContainerHome> HOME </ContainerHome>;
+  return (
+    <>
+      <PageHeader title="HOME" />
+      <AllContainer></AllContainer>
+    </>
+  );
 };
 
 export default Home;

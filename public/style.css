@@ -1,4 +1,33 @@
-body {
+/*====  RESET ============================ */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-style: "Nunito", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+/*====  VARIABLES ============================ */
+:root {
+  /* colors */
+  --light-gray: #edeff3;
+  --black: #222b45;
+
+  --nunito-font: "Nunito", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }

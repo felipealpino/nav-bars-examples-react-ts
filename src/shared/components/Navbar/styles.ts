@@ -5,15 +5,19 @@ interface IContainerNavBarProps {
 }
 
 export const HambuguerIcon = styled.div`
-  margin-top: 10px;
-  margin-left: 10px;
   position: fixed;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 0;
   left: 0;
   svg {
     width: 20px;
     height: 20px;
     cursor: pointer;
+    fill: #ffff;
   }
 `;
 
@@ -21,7 +25,7 @@ export const ContainerNavBar = styled.div<IContainerNavBarProps>`
   position: fixed;
   width: 150px;
   height: 100vh;
-  background-color: #e5e5e5;
+  background-color: #694db5;
   left: ${(p) => (p.isNavbarOpen ? "0px" : "-150px")};
   transition: all 0.2s ease-in-out;
 `;
@@ -40,14 +44,17 @@ export const HeaderNavBar = styled.div`
     svg {
       width: 20px;
       height: 20px;
+      fill: #ffff;
       cursor: pointer;
     }
   }
 `;
 
 export const ListItem = styled.div`
-  padding-left: 10px;
-  margin-bottom: 10px;
+  .checked {
+    background-color: red !important;
+  }
+
   a {
     display: flex;
     align-items: center;
@@ -59,4 +66,11 @@ export const ListItem = styled.div`
     width: 25px;
     height: 25px;
   }
+`;
+
+export const ConainerLink = styled.div`
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
 `;

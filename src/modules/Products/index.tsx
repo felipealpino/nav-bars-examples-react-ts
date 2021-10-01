@@ -1,8 +1,14 @@
 import React from "react";
-import { ContainerProdutos } from "./styles";
+import AllContainer from "../../shared/components/AllContainer";
+import PageHeader from "../../shared/components/PageHeader";
 
 const Products: React.FC = () => {
-  return <ContainerProdutos> PRODUTOS </ContainerProdutos>;
+  return (
+    <>
+      <PageHeader title="PRODUTOS" />
+      <AllContainer> </AllContainer>
+    </>
+  );
 };
 
 export default Products;
