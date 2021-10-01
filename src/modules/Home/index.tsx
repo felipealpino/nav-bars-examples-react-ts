@@ -1,9 +1,10 @@
 import { Form } from "@unform/web";
-import React from "react";
+import React, { useState } from "react";
 import AllContainer from "../../shared/components/AllContainer";
 import Input from "../../shared/components/Input";
 import PageHeader from "../../shared/components/PageHeader";
 import Select from "../../shared/components/Select";
+import Spinner from "../../shared/components/Spinner";
 import TextArea from "../../shared/components/TextArea";
 import ListProductsService from "../Products/services/ListProductsService";
 
@@ -24,8 +25,11 @@ const submitFormData = async (data: any) => {
 };
 
 const Home: React.FC = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   return (
     <>
+      {isLoading && <Spinner />}
       <PageHeader title="HOME" />
       <AllContainer>
         <Form onSubmit={submitFormData}>
