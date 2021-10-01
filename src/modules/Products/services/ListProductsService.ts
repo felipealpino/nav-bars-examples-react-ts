@@ -1,4 +1,4 @@
-import axios, { CancelToken, CancelTokenSource } from "axios";
+import axios, { CancelTokenSource } from "axios";
 
 const apiUrl = process.env.REACT_APP_API_URL ? process.env.REACT_APP_API_URL : null;
 
@@ -26,7 +26,7 @@ class ListProductsService {
 
   public async listAllProducts(query = "reference", value = "", page = 0): Promise<IlistAllProducts | false> {
     try {
-      const res = await axios.get(`${apiUrl}/products?size=900&page=${page}&${query}=${value}`, {
+      const res = await axios.get(`${apiUrl}/products?size=30&page=${page}&${query}=${value}`, {
         cancelToken: this.source.token
       });
       return res.data;
