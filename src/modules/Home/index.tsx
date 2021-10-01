@@ -5,6 +5,7 @@ import Input from "../../shared/components/Input";
 import PageHeader from "../../shared/components/PageHeader";
 import Select from "../../shared/components/Select";
 import TextArea from "../../shared/components/TextArea";
+import ListProductsService from "../Products/services/ListProductsService";
 
 const fakeOptions = [
   {
@@ -17,8 +18,9 @@ const fakeOptions = [
   }
 ];
 
-const submitFormData = (data: any) => {
-  console.log(data);
+const submitFormData = async (data: any) => {
+  const listProducts = await new ListProductsService().listAllProducts();
+  console.log(listProducts);
 };
 
 const Home: React.FC = () => {
