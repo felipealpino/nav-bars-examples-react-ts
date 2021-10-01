@@ -27,6 +27,7 @@ const selectOptions = [
 const Products: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<IProducts[]>();
+  const [query, setQuery] = useState<string>("reference");
   const cancelDataRequest = useRef<CancelTokenSource>();
 
   const loadProducts = useCallback(async (query?: string, value?: string, page?: number) => {
@@ -44,9 +45,13 @@ const Products: React.FC = () => {
     setIsLoading(false);
   }, [loadProducts]);
 
-  const handleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
-    loadProducts(undefined, event.target.value);
+  const handleSubmitInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    loadProducts(query, event.target.value);
     setIsLoading(false);
+  };
+
+  const handleSubmitSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setQuery(event.target.value);
   };
 
   return (
@@ -56,8 +61,13 @@ const Products: React.FC = () => {
       <AllContainer>
         <ContainerInput>
           <Form onSubmit={() => {}}>
-            <Input name="search_product" label="Busque um produto" onChange={(e) => handleSubmit(e)} />
-            <Select name="search_type" label="Selecione o que deseja buscar" options={selectOptions} />
+            <Input name="search_product" label="Busque um produto" onChange={(e) => handleSubmitInput(e)} />
+            <Select
+              name="search_type"
+              label="Selecione o que deseja buscar"
+              options={selectOptions}
+              onChange={(e) => handleSubmitSelect(e)}
+            />
           </Form>
         </ContainerInput>
 
