@@ -11,5 +11,5 @@ export const SiderBarData = [
     title: "Produtos",
     path: "/produtos",
     icon: FaProductHunt
-  },
+  }
 ];

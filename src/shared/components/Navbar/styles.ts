@@ -25,7 +25,7 @@ export const ContainerNavBar = styled.div<IContainerNavBarProps>`
   position: fixed;
   width: 150px;
   height: 100vh;
-  background-color: #694db5;
+  background-color: var(--main-azul-anil-logo);
   left: ${(p) => (p.isNavbarOpen ? "0px" : "-150px")};
   transition: all 0.2s ease-in-out;
 `;
@@ -33,9 +33,9 @@ export const ContainerNavBar = styled.div<IContainerNavBarProps>`
 export const HeaderNavBar = styled.div`
   width: 100%;
   height: 60px;
-  margin-bottom: 10px;
   box-sizing: border-box;
   position: relative;
+  background-color: grey;
 
   .close-icon {
     position: absolute;
@@ -50,9 +50,14 @@ export const HeaderNavBar = styled.div`
   }
 `;
 
+export const AllLinks = styled.div`
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+`;
+
 export const ListItem = styled.div`
   .checked {
-    background-color: red !important;
+    background-color: var(--light-gray);
   }
 
   a {
@@ -65,6 +70,7 @@ export const ListItem = styled.div`
     margin-right: 10px;
     width: 25px;
     height: 25px;
+    fill: var(--main-anil-subtitle);
   }
 `;
 

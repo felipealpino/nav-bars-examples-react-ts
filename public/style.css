@@ -4,6 +4,7 @@
   padding: 0;
   box-sizing: border-box;
   font-style: "Nunito", sans-serif;
+  color: var(--main-anil-subtitle);
 }
 
 ul {
@@ -26,6 +27,14 @@ img {
   --black: #222b45;
 
   --nunito-font: "Nunito", sans-serif;
+
+  --main-bg-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  --main-information-color: #009edb;
+  --main-success-color: #00d68f;
+  --main-danger-color: #ff3d71;
+  --main-warning-color: #ffaa00;
+  --main-azul-anil-logo: #58c4e9;
+  --main-anil-subtitle: #202355;
 }
 
 html {

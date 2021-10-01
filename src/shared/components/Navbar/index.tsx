@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import { SiderBarData } from "./SideBarData";
-import { ConainerLink, ContainerNavBar, HambuguerIcon, HeaderNavBar, ListItem } from "./styles";
+import { AllLinks, ConainerLink, ContainerNavBar, HambuguerIcon, HeaderNavBar, ListItem } from "./styles";
 import { AiOutlineClose } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import BackgroundModal from "../BackgroundModal";
@@ -14,7 +14,6 @@ const Navbar: React.FC = () => {
     setHowIsChecked(index);
   }, []);
 
-  console.log(howIsChecked);
   return (
     <>
       <BackgroundModal isNavbarOpen={isNavbarOpen} />
@@ -31,18 +30,20 @@ const Navbar: React.FC = () => {
           </div>
         </HeaderNavBar>
 
-        {SiderBarData.map((sb, index) => {
-          return (
-            <ListItem onClick={() => changeTab(index)} key={index}>
-              <ConainerLink className={`${howIsChecked === index && "checked"}`}>
-                <Link to={sb.path}>
-                  {<sb.icon />}
-                  <span>{sb.title}</span>
-                </Link>
-              </ConainerLink>
-            </ListItem>
-          );
-        })}
+        <AllLinks>
+          {SiderBarData.map((sb, index) => {
+            return (
+              <ListItem onClick={() => changeTab(index)} key={index}>
+                <ConainerLink className={`${howIsChecked === index && "checked"}`}>
+                  <Link to={sb.path}>
+                    {<sb.icon />}
+                    <span>{sb.title}</span>
+                  </Link>
+                </ConainerLink>
+              </ListItem>
+            );
+          })}
+        </AllLinks>
       </ContainerNavBar>
     </>
   );
