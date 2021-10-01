@@ -23,10 +23,10 @@ export const HambuguerIcon = styled.div`
 
 export const ContainerNavBar = styled.div<IContainerNavBarProps>`
   position: fixed;
-  width: 150px;
+  width: 60%;
   height: 100vh;
   background-color: var(--main-azul-anil-logo);
-  left: ${(p) => (p.isNavbarOpen ? "0px" : "-150px")};
+  left: ${(p) => (p.isNavbarOpen ? "0px" : "-60%")};
   transition: all 0.2s ease-in-out;
 `;
 
