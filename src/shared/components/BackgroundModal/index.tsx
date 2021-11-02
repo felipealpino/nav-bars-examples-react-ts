@@ -5,8 +5,8 @@ interface IBackgroundModal {
   isNavbarOpen: boolean;
 }
 
-export const BackgroundModal: React.FC<IBackgroundModal> = ({ children, isNavbarOpen }) => {
-  return <ContainerModal isNavbarOpen={isNavbarOpen}></ContainerModal>;
+export const BackgroundModal: React.FC<IBackgroundModal> = ({ children }) => {
+  return <ContainerModal></ContainerModal>;
 };
 
 export default BackgroundModal;

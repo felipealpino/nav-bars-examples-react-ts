@@ -1,12 +1,10 @@
 import React from "react";
-import AllContainer from "../../shared/components/AllContainer";
-import PageHeader from "../../shared/components/PageHeader";
+import MainContainer from "../../shared/components/MainContainer";
 
 const Products: React.FC = () => {
   return (
     <>
-      <PageHeader title="PRODUTOS" />
-      <AllContainer> </AllContainer>
+      <MainContainer> </MainContainer>
     </>
   );
 };

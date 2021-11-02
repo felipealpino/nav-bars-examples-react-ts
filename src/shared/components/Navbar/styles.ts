@@ -1,82 +1,82 @@
 import styled from "styled-components";
 
-interface IContainerNavBarProps {
-  isNavbarOpen: boolean;
-}
-
 export const HambuguerIcon = styled.div`
-  position: fixed;
-  height: 50px;
-  width: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: 0;
-  left: 0;
+  position: absolute;
+  top: 5px;
+  right: -35px;
   svg {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
-    fill: #ffff;
+    fill: #252525;
   }
 `;
 
-export const ContainerNavBar = styled.div<IContainerNavBarProps>`
+export const ContainerNavBar = styled.div<{ isNavBarOpen: boolean }>`
+  max-width: ${(p) => (p.isNavBarOpen ? "250px" : "70px")};
   position: fixed;
   width: 60%;
   height: 100vh;
-  background-color: var(--main-azul-anil-logo);
-  left: ${(p) => (p.isNavbarOpen ? "0px" : "-60%")};
+  background-color: var(--blue);
   transition: all 0.2s ease-in-out;
 `;
 
 export const HeaderNavBar = styled.div`
   width: 100%;
-  height: 60px;
-  box-sizing: border-box;
+  padding: 10px 0px;
   position: relative;
-  background-color: grey;
 
-  .close-icon {
-    position: absolute;
-    right: 5px;
-    top: 5px;
+  .brands-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     svg {
-      width: 20px;
-      height: 20px;
-      fill: #ffff;
-      cursor: pointer;
+      width: 25px;
+      height: 25px;
+      fill: white;
     }
   }
 `;
 
 export const AllLinks = styled.div`
-  height: calc(100vh - 60px);
+  padding-top: 30px;
+  height: calc(100vh - 30px);
   overflow-y: auto;
 `;
 
 export const ListItem = styled.div`
-  .checked {
-    background-color: var(--light-gray);
-  }
+  padding-left: 10px;
 
   a {
     display: flex;
     align-items: center;
-    text-decoration: none;
+    span {
+      color: #ffffff;
+      font-weight: bold;
+    }
+    svg {
+      margin-right: 15px;
+      width: 25px;
+      height: 25px;
+      color: white;
+    }
   }
 
-  svg {
-    margin-right: 10px;
-    width: 25px;
-    height: 25px;
-    fill: var(--main-anil-subtitle);
+  .checked {
+    background-color: var(--grey);
+    a span {
+      color: var(--blue);
+    }
+    svg {
+      color: var(--blue);
+    }
   }
 `;
 
-export const ConainerLink = styled.div`
-  padding-left: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
+export const ContainerLink = styled.div`
+  padding-left: 15px;
+  padding-top: 10px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  padding-bottom: 10px;
 `;

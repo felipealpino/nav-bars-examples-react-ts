@@ -1,14 +1,13 @@
 import React, { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import { SiderBarData } from "./SideBarData";
-import { AllLinks, ConainerLink, ContainerNavBar, HambuguerIcon, HeaderNavBar, ListItem } from "./styles";
-import { AiOutlineClose } from "react-icons/ai";
-import { GiHamburgerMenu } from "react-icons/gi";
-import BackgroundModal from "../BackgroundModal";
+import { AllLinks, ContainerLink, ContainerNavBar, HambuguerIcon, HeaderNavBar, ListItem } from "./styles";
+import { FiMenu } from "react-icons/fi";
+import { AiOutlineApple } from "react-icons/ai";
 
 const Navbar: React.FC = () => {
-  const [isNavbarOpen, setIsNavBarOpen] = useState<boolean>(false);
   const [howIsChecked, setHowIsChecked] = useState<number>(0);
+  const [isNavBarOpen, setIsNavBarOpen] = useState<boolean>(false);
 
   const changeTab = useCallback((index: number) => {
     setHowIsChecked(index);
@@ -16,30 +15,26 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <BackgroundModal isNavbarOpen={isNavbarOpen} />
-      <ContainerNavBar isNavbarOpen={isNavbarOpen}>
-        {!isNavbarOpen && (
-          <HambuguerIcon onClick={() => setIsNavBarOpen(true)}>
-            <GiHamburgerMenu />
-          </HambuguerIcon>
-        )}
-
+      <ContainerNavBar isNavBarOpen={isNavBarOpen}>
         <HeaderNavBar>
-          <div className="close-icon" onClick={() => setIsNavBarOpen(false)}>
-            <AiOutlineClose />
+          <div className="brands-name">
+            <AiOutlineApple />
           </div>
+          <HambuguerIcon onClick={() => setIsNavBarOpen(!isNavBarOpen)}>
+            <FiMenu />
+          </HambuguerIcon>
         </HeaderNavBar>
 
         <AllLinks>
           {SiderBarData.map((sb, index) => {
             return (
               <ListItem onClick={() => changeTab(index)} key={index}>
-                <ConainerLink className={`${howIsChecked === index && "checked"}`}>
+                <ContainerLink className={`${howIsChecked === index && "checked"}`}>
                   <Link to={sb.path}>
                     {<sb.icon />}
-                    <span>{sb.title}</span>
+                    {isNavBarOpen && <span>{sb.title}</span>}
                   </Link>
-                </ConainerLink>
+                </ContainerLink>
               </ListItem>
             );
           })}

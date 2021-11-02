@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerModal = styled.div<{ isNavbarOpen: boolean }>`
+export const ContainerModal = styled.div`
   position: fixed;
   height: 100vh;
   width: 100vw;
@@ -9,5 +9,4 @@ export const ContainerModal = styled.div<{ isNavbarOpen: boolean }>`
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.2);
-  display: ${(p) => (p.isNavbarOpen ? "block" : "none")};
 `;
