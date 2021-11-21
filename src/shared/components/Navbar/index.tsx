@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
-import { SiderBarData } from "./SideBarData";
+import { SideBarData } from "./SideBarData";
 import { AllLinks, ContainerLink, ContainerNavBar, HambuguerIcon, HeaderNavBar, ListItem } from "./styles";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineApple } from "react-icons/ai";
@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
         </HeaderNavBar>
 
         <AllLinks>
-          {SiderBarData.map((sb, index) => {
+          {SideBarData.map((sb, index) => {
             return (
               <ListItem onClick={() => changeTab(index)} key={index}>
                 <ContainerLink className={`${howIsChecked === index && "checked"}`}>

@@ -1,7 +1,7 @@
 import { IoHomeOutline } from "react-icons/io5";
 import { IoHammerOutline } from "react-icons/io5";
 
-export const SiderBarData = [
+export const SideBarData = [
   {
     title: "Home",
     path: "/",
